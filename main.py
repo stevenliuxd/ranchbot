@@ -1,7 +1,7 @@
 import discord
 import requests
 
-TOKEN = "MTA4NDY1NTAzNjk2NzE2MjAwNg.GYi6TN.Xi8aGzvvIn8lnys5L96zIYBKLXnIldh_X4zSY4"
+DISCORD_TOKEN = "MTA4NDY1NTAzNjk2NzE2MjAwNg.GYi6TN.Xi8aGzvvIn8lnys5L96zIYBKLXnIldh_X4zSY4"
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -36,18 +36,10 @@ async def on_message(message):
     if message.author == client.user:
         return
     
-    if user_message.lower() == '!apexytest':
-        await message.channel.send('The apex gods acknowledge your presence!')
-        return
-    
     if user_message.lower() == '!apexmap':
-        info = get_apex_map()
-        current_map = info[0]
-        time_remaining = info[1]
-        next_map = info[2]
+        [current_map, time_remaining, next_map] = get_apex_map()
         await message.channel.send(f'The current map is {current_map} with {time_remaining} minutes remaining.')
         await message.channel.send(f'Next map: {next_map}.')
         return
 
-
-client.run(TOKEN)
+client.run(DISCORD_TOKEN)
