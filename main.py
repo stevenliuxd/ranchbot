@@ -1,6 +1,5 @@
 import discord
 import requests
-import json
 
 TOKEN = "MTA4NDY1NTAzNjk2NzE2MjAwNg.GYi6TN.Xi8aGzvvIn8lnys5L96zIYBKLXnIldh_X4zSY4"
 
