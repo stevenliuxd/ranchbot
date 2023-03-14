@@ -71,9 +71,7 @@ async def on_message(message):
         if user_message.lower() == '!apexcraft':
             [daily_first_item, daily_first_item_rarity, daily_second_item, daily_second_item_rarity, weekly_first_item,
             weekly_first_item_rarity, weekly_second_item, weekly_second_item_rarity, first_weapon, second_weapon] = get_apex_crafting_rotation()
-            await message.channel.send(f'Daily: {daily_first_item} ({daily_first_item_rarity}), {daily_second_item} ({daily_second_item_rarity})\n\
-            Weekly: {weekly_first_item} ({weekly_first_item_rarity}), {weekly_second_item} ({weekly_second_item_rarity})\n\
-            Weapons: {first_weapon} and the {second_weapon}.')
+            await message.channel.send(f'Daily: {daily_first_item} ({daily_first_item_rarity}), {daily_second_item} ({daily_second_item_rarity})\nWeekly: {weekly_first_item} ({weekly_first_item_rarity}), {weekly_second_item} ({weekly_second_item_rarity})\nWeapons: {first_weapon} and the {second_weapon}.')
             return
 
 
