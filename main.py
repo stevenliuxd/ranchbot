@@ -69,10 +69,8 @@ async def on_message(message):
             await message.channel.send(f'The current map is {current_map} with {time_remaining} minutes remaining.\nNext map: {next_map}.')
             return
         if user_message.lower() == '!apexcraft':
-            [daily_first_item, daily_first_item_rarity, daily_second_item, daily_second_item_rarity, weekly_first_item,
-            weekly_first_item_rarity, weekly_second_item, weekly_second_item_rarity, first_weapon, second_weapon] = get_apex_crafting_rotation()
-            await message.channel.send(f'Daily: {daily_first_item} ({daily_first_item_rarity}), {daily_second_item} ({daily_second_item_rarity})\nWeekly: {weekly_first_item} ({weekly_first_item_rarity}), {weekly_second_item} ({weekly_second_item_rarity})\nWeapons: {first_weapon} and the {second_weapon}.')
+            res = get_apex_crafting_rotation()
+            await message.channel.send(f'Daily: {res[0]} ({res[1]}), {res[2]} ({res[3]})\nWeekly: {res[4]} ({res[5]}), {res[6]} ({res[7]})\nWeapons: {res[8]} and the {res[9]}.')
             return
-
 
 client.run(DISCORD_TOKEN)
