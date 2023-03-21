@@ -31,16 +31,12 @@ def get_apex_crafting_rotation():
 
         daily_first_item = str(data[0]['bundleContent'][0]['itemType']['name']).capitalize().replace("_", " ")
         daily_first_item_rarity = str(data[0]['bundleContent'][0]['itemType']['rarity'])
-
         daily_second_item = str(data[0]['bundleContent'][1]['itemType']['name']).capitalize().replace("_", " ")
         daily_second_item_rarity = str(data[0]['bundleContent'][1]['itemType']['rarity'])
-
         weekly_first_item = str(data[1]['bundleContent'][0]['itemType']['name']).capitalize().replace("_", " ")
         weekly_first_item_rarity = str(data[1]['bundleContent'][0]['itemType']['rarity'])
-
         weekly_second_item = str(data[1]['bundleContent'][1]['itemType']['name']).capitalize().replace("_", " ")
         weekly_second_item_rarity = str(data[1]['bundleContent'][1]['itemType']['rarity'])
-
         first_weapon = str(data[2]['bundleContent'][0]['itemType']['name']).capitalize().replace("_", " ")
         second_weapon = str(data[3]['bundleContent'][0]['itemType']['name']).capitalize().replace("_", " ")
 
@@ -48,6 +44,20 @@ def get_apex_crafting_rotation():
                     weekly_first_item_rarity, weekly_second_item, weekly_second_item_rarity, first_weapon, second_weapon]
         
         return response
+
+def get_player_level(player):
+    url = f'https://api.mozambiquehe.re/bridge?auth=ef056220ecc9350dd1214b2213643c87&player={player}&platform=PC'
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        data = response.json()
+        try:
+            level = data['global']['level']
+        except KeyError:
+            return 'DNE'
+        
+        return level
+
 
 @client.event
 async def on_ready():
@@ -71,6 +81,14 @@ async def on_message(message):
         if user_message.lower() == '!apexcraft':
             res = get_apex_crafting_rotation()
             await message.channel.send(f'Daily: {res[0]} ({res[1]}), {res[2]} ({res[3]})\nWeekly: {res[4]} ({res[5]}), {res[6]} ({res[7]})\nWeapons: {res[8]} and the {res[9]}.')
+            return
+        if '!apexlevel ' in user_message.lower():
+            arr = user_message.lower().split()
+            res = get_player_level(arr[1])
+            if res != 'DNE':
+                await message.channel.send(f'{arr[1]} is currently level {res}.')
+            else:
+                await message.channel.send(f'The player {arr[1]} does not exist. Please make sure to use their Origin account name.')
             return
 
 client.run(DISCORD_TOKEN)
