@@ -73,7 +73,7 @@ async def on_message(message):
     if message.author == client.user:
         return
     
-    if message.channel.name == 'bots':
+    if message.channel.name == 'bots' or discord.DMChannel:
         if user_message.lower() == '!apexmap':
             [current_map, time_remaining, next_map] = get_apex_map()
             await message.channel.send(f'The current map is {current_map} with {time_remaining} minutes remaining.\nNext map: {next_map}.')
