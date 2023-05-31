@@ -67,10 +67,11 @@ async def on_ready():
 async def on_message(message):
     username = str(message.author).split('#')[0]
     user_message = str(message.content)
-    if message.channel.name:
+    try:
         channel = str(message.channel.name)
-    else:
+    except AttributeError:
         channel = 'DM'
+        
     print(f'{username}: {user_message} ({channel})')
 
     if message.author == client.user:
