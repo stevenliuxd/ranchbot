@@ -67,10 +67,7 @@ async def on_ready():
 async def on_message(message):
     username = str(message.author).split('#')[0]
     user_message = str(message.content)
-    try:
-        channel = str(message.channel.name)
-    except AttributeError:
-        channel = 'DM'
+    channel = str(message.channel.name)
 
     print(f'{username}: {user_message} ({channel})')
 
@@ -94,11 +91,5 @@ async def on_message(message):
             else:
                 await message.channel.send(f'The player {arr[1]} does not exist. Please make sure to use their Origin account name.')
             return 
-    elif message.channel.type == 'private':
-        if user_message.lower() == 'debug':
-            [current_map, time_remaining, next_map] = get_apex_map()
-            await username.send(f'The current map is {current_map} with {time_remaining} minutes remaining.\nNext map: {next_map}.')
-            res = get_apex_crafting_rotation()
-            await username.send(f'Daily: {res[0]} ({res[1]}), {res[2]} ({res[3]})\nWeekly: {res[4]} ({res[5]}), {res[6]} ({res[7]})\nWeapons: {res[8]} and the {res[9]}.')
 
 client.run(DISCORD_TOKEN)
