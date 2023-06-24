@@ -1,5 +1,6 @@
 import discord
 from apexy import get_apex_map, get_apex_crafting_rotation, get_player_level
+from weather import get_weather_by_city
 
 DISCORD_TOKEN = "MTA4NDY1NTAzNjk2NzE2MjAwNg.GYi6TN.Xi8aGzvvIn8lnys5L96zIYBKLXnIldh_X4zSY4"
 
@@ -39,5 +40,9 @@ async def on_message(message):
             else:
                 await message.channel.send(f'The player {arr[1]} does not exist. Please make sure to use their Origin account name.')
             return 
+        if '!weather ' in user_message.lower():
+            arr = user_message.lower().split()
+            res = get_weather_by_city(arr[1])
+            return
 
 client.run(DISCORD_TOKEN)
