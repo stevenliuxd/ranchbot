@@ -17,7 +17,7 @@ def get_weather_by_city(location):
     else:
         return 'DNE'
     
-    weather_url = f'https://api.openweathermap.org/data/3.0/onecall?lat={latitude}&lon={longitude}&appid=6d50bbf444583b383497c9c97039a0b1'
+    weather_url = f'https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid=edba5fd777925d3c8bd56bed14996323'
     response = requests.get(weather_url)
 
     print(response)
