@@ -1,2 +1,5 @@
 # apexy
-Simple Apex Legends Bot!
+Simple apex bot!
+
+To run in linux:
+nohup python3 main.py &
