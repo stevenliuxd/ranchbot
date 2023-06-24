@@ -43,6 +43,10 @@ async def on_message(message):
         if '!weather ' in user_message.lower():
             arr = user_message.lower().split()
             res = get_weather_by_city(arr[1])
+            if res != 'DNE':
+                await message.channel.send(res)
+            else:
+                await message.channel.send(f'Sorry, I failed to retrieve the data :(')
             return
 
 client.run(DISCORD_TOKEN)
