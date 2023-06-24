@@ -15,7 +15,7 @@ def get_weather_by_city(location):
         longitude = data['data'][0]['longitude']
         print(f'Decoded lat/lon: {latitude}/{longitude}.')
     else:
-        return 'Error'
+        return 'DNE'
     
     weather_url = f'https://api.openweathermap.org/data/3.0/onecall?lat={latitude}&lon={longitude}&appid=6d50bbf444583b383497c9c97039a0b1'
     response = requests.get(weather_url)
