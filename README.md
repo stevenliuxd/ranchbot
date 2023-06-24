@@ -1,5 +1,3 @@
-# apexy
-Simple apex bot!
-
-To run in linux:
-nohup python3 main.py &
+# Ranchbot
+Simple bot with many features!
+Dedicated to the friends at Ni Hao Discord.
