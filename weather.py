@@ -14,7 +14,7 @@ def get_weather_by_city(location):
     if 'data' in data and len(data['data']) > 0:
         latitude = data['data'][0]['latitude']
         longitude = data['data'][0]['longitude']
-        print(f'Decoded lat/lon: {latitude}/{longitude}.')
+        print(f'Decoded lat/lon: {latitude}/{longitude} for city: {location}.')
     else:
         return 'DNE'
     
@@ -29,6 +29,7 @@ def get_weather_by_city(location):
         city = data_dict["name"]
         weather = data_dict["weather"][0]["description"].lower()
         temp = str(int(data_dict["main"]["temp"] - 273.15))
+        
 
         current = f'The current weather in {city} has {weather} with a temperature of {temp} degrees.\n'
         print(current)

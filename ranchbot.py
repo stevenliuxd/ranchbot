@@ -42,7 +42,9 @@ async def on_message(message):
             return 
         if '!weather ' in user_message.lower():
             arr = user_message.lower().split()
-            res = get_weather_by_city(arr[1])
+            city_arr = arr[1:]
+            city_string = ' '.join(str(element) for element in city_arr)
+            res = get_weather_by_city(city_string)
             if res != 'DNE':
                 await message.channel.send(res)
             else:
