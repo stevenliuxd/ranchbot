@@ -1,7 +1,7 @@
 import requests
 
 def get_apex_map():
-    query_params = {'version': 1}
+    query_params = {'version': 2}
 
     url = 'https://api.mozambiquehe.re/maprotation?auth=ef056220ecc9350dd1214b2213643c87'
     response = requests.get(url, params=query_params)
@@ -9,11 +9,20 @@ def get_apex_map():
     if response.status_code == 200:
         data = response.json()
 
-    current_map = data['battle_royale']['current']['map']
-    time_remaining = data['battle_royale']['current']['remainingMins']
-    next_map = data['battle_royale']['next']['map']
+    br_current_map = data['battle_royale']['current']['map']
+    br_time_remaining = data['battle_royale']['current']['remainingMins']
+    br_next_map = data['battle_royale']['next']['map']
 
-    return [current_map, time_remaining, next_map]
+    ltm_current_mode = data['ltm']['current']['eventName']
+    ltm_current_map = data['ltm']['current']['map']
+    ltm_remaining = data['ltm']['current']['remainingMins']
+    ltm_next_mode = data['ltm']['next']['eventName']
+    ltm_next_map = data['ltm']['next']['map']
+
+    br_resp = f'The current BR map is {br_current_map} with {br_time_remaining} minutes remaining. Next map: {br_next_map}.'
+    ltm_resp = f'{ltm_current_mode} is playing on {ltm_current_map} with {ltm_remaining} minutes remaining. Next: {ltm_next_mode} on {ltm_next_map}.'
+
+    return [br_resp, ltm_resp]
 
 def get_apex_crafting_rotation():
     url = 'https://api.mozambiquehe.re/crafting?auth=ef056220ecc9350dd1214b2213643c87'

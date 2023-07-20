@@ -25,8 +25,8 @@ async def on_message(message):
     
     if message.channel.name == 'bots':
         if user_message.lower() == '!apexmap':
-            [current_map, time_remaining, next_map] = get_apex_map()
-            await message.channel.send(f'The current map is {current_map} with {time_remaining} minutes remaining.\nNext map: {next_map}.')
+            [br, ltm] = get_apex_map()
+            await message.channel.send(f'{br}\n{ltm}')
             return
         if user_message.lower() == '!apexcraft':
             res = get_apex_crafting_rotation()
