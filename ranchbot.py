@@ -30,7 +30,7 @@ async def on_message(message):
             return
         if user_message.lower() == '!apexcraft':
             res = get_apex_crafting_rotation()
-            await message.channel.send(f'Daily: {res[0]} ({res[1]}), {res[2]} ({res[3]})\nWeekly: {res[4]} ({res[5]}), {res[6]} ({res[7]})\nWeapons: {res[8]} and the {res[9]}.')
+            await message.channel.send(f'Daily: {res[0]} ({res[1]}), {res[2]} ({res[3]})\nWeekly: {res[4]} ({res[5]}), {res[6]} ({res[7]})')
             return
         if '!apexlevel ' in user_message.lower():
             arr = user_message.lower().split()

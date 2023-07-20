@@ -30,11 +30,9 @@ def get_apex_crafting_rotation():
         weekly_first_item_rarity = str(data[1]['bundleContent'][0]['itemType']['rarity'])
         weekly_second_item = str(data[1]['bundleContent'][1]['itemType']['name']).capitalize().replace("_", " ")
         weekly_second_item_rarity = str(data[1]['bundleContent'][1]['itemType']['rarity'])
-        first_weapon = str(data[2]['bundleContent'][0]['itemType']['name']).capitalize().replace("_", " ")
-        second_weapon = str(data[3]['bundleContent'][0]['itemType']['name']).capitalize().replace("_", " ")
 
         response = [daily_first_item, daily_first_item_rarity, daily_second_item, daily_second_item_rarity, weekly_first_item,
-                    weekly_first_item_rarity, weekly_second_item, weekly_second_item_rarity, first_weapon, second_weapon]
+                    weekly_first_item_rarity, weekly_second_item, weekly_second_item_rarity]
         
         return response
 
