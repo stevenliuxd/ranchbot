@@ -48,6 +48,7 @@ async def on_message(message):
             if res != 'DNE':
                 await message.channel.send(res)
             else:
+                print(res)
                 await message.channel.send(f'Sorry, I failed to retrieve the data :(')
             return
 

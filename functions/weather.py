@@ -8,7 +8,10 @@ def get_weather_by_city(location):
         'access_key': '3325fb1031835a16dc5426f3ff326e14',
         'query': location
     }
+
     response = requests.get(geocoding_api_url, params=params)
+    print(f'get geocoding response: {response.json()}')
+
     data = response.json()
     latitude = longitude = 0
     if 'data' in data and len(data['data']) > 0:
@@ -22,6 +25,7 @@ def get_weather_by_city(location):
 
     weather_url = f'https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid=edba5fd777925d3c8bd56bed14996323'
     response = requests.get(weather_url)
+    print(f'get weather response: {response.json()}')
 
     if response.status_code == 200:
         data_dict = json.loads(response.text)
