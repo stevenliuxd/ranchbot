@@ -3,7 +3,7 @@ from functions.apexy import get_apex_map, get_apex_crafting_rotation, get_player
 from functions.weather import get_weather_by_city
 from decouple import config
 
-DISCORD_TOKEN = config('DISCORD_API')
+DISCORD_TOKEN = config('DISCORD_API_KEY')
 
 if DISCORD_TOKEN is not None:
     print(f'DISCORD_API: {DISCORD_TOKEN}')

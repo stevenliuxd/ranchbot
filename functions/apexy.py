@@ -1,9 +1,12 @@
 import requests
+from decouple import config
+
+MOZAM_API_TOKEN = config('MOZAM_API_KEY')
 
 def get_apex_map():
     query_params = {'version': 2}
 
-    url = 'https://api.mozambiquehe.re/maprotation?auth=ef056220ecc9350dd1214b2213643c87'
+    url = f'https://api.mozambiquehe.re/maprotation?auth={MOZAM_API_TOKEN}'
     response = requests.get(url, params=query_params)
 
     if response.status_code == 200:
@@ -25,7 +28,7 @@ def get_apex_map():
     return [br_resp, ltm_resp]
 
 def get_apex_crafting_rotation():
-    url = 'https://api.mozambiquehe.re/crafting?auth=ef056220ecc9350dd1214b2213643c87'
+    url = f'https://api.mozambiquehe.re/crafting?auth={MOZAM_API_TOKEN}'
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -46,7 +49,7 @@ def get_apex_crafting_rotation():
         return response
 
 def get_player_level(player):
-    url = f'https://api.mozambiquehe.re/bridge?auth=ef056220ecc9350dd1214b2213643c87&player={player}&platform=PC'
+    url = f'https://api.mozambiquehe.re/bridge?auth={MOZAM_API_TOKEN}&player={player}&platform=PC'
     response = requests.get(url)
 
     if response.status_code == 200:

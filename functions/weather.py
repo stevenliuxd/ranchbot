@@ -1,11 +1,15 @@
 import requests
 import json
+from decouple import config
+
+GEO_API_TOKEN = config('GEO_API_KEY')
+WEATHER_API_TOKEN = config('WEATHER_API_KEY')
 
 def get_weather_by_city(location):
 
     geocoding_api_url = 'http://api.positionstack.com/v1/forward'
     params = {
-        'access_key': '3325fb1031835a16dc5426f3ff326e14',
+        'access_key': GEO_API_TOKEN,
         'query': location
     }
 
@@ -22,7 +26,7 @@ def get_weather_by_city(location):
     
     current = ''
 
-    weather_url = f'https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid=edba5fd777925d3c8bd56bed14996323'
+    weather_url = f'https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid={WEATHER_API_TOKEN}'
     response = requests.get(weather_url)
     data = response.json()
 
