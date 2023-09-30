@@ -1,8 +1,9 @@
 import discord
+import os
 from functions.apexy import get_apex_map, get_apex_crafting_rotation, get_player_level
 from functions.weather import get_weather_by_city
 
-DISCORD_TOKEN = "MTA4NDY1NTAzNjk2NzE2MjAwNg.GJTr6W.879A6HHZB69ImzRe8nbU6boZZg7xsIE1u7UKXA"
+DISCORD_TOKEN = os.environ.get('DISCORD_API')
 
 intents = discord.Intents.default()
 intents.message_content = True
