@@ -5,6 +5,11 @@ from functions.weather import get_weather_by_city
 
 DISCORD_TOKEN = os.environ.get('DISCORD_API')
 
+if DISCORD_TOKEN is not None:
+    print(f'DISCORD_API: {DISCORD_TOKEN}')
+else:
+    print('DISCORD_API environment variable is not set.')
+
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
