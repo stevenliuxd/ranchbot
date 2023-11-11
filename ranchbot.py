@@ -1,6 +1,7 @@
 import discord
 from functions.apexy import get_apex_map, get_apex_crafting_rotation, get_player_level
 from functions.weather import get_weather_by_city
+from functions.ip import get_public_ip_address
 from decouple import config
 
 DISCORD_TOKEN = config('DISCORD_API_KEY')
@@ -54,5 +55,9 @@ async def on_message(message):
 
             await message.channel.send(res)
             return
+        if '!ranchip' in user_message.lower():
+            ip = get_public_ip_address()
+            await message.channel.send(ip)
+
 
 client.run(DISCORD_TOKEN)
