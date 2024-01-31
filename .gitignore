@@ -1,3 +1,5 @@
 nohup.out
 __pycache__/
 .env
+functions/LICENSE.chromedriver
+functions/chromedriver
