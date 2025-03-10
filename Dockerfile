@@ -1,8 +1,6 @@
-FROM python:3.9-slim
+FROM ranchbot-base:latest
 
 WORKDIR /app
-
-RUN pip install discord.py python-decouple requests
 
 COPY . .
 

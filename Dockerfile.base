@@ -1,0 +1,9 @@
+FROM python:3.9-slim
+
+WORKDIR /base-app
+
+RUN pip install discord.py python-decouple requests
+
+WORKDIR /app
+
+COPY . .
