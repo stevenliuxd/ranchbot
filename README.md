@@ -28,7 +28,7 @@ ExecStart=/usr/bin/docker run --rm --env-file /home/steven/code/ranchbot/.env ra
 ```
 
 ## Run in Kubernetes
-This is super uneccesary; we're doing this because we can. 
+This is super unneccesary; we're doing this because we can. 
 
 Make sure minikube is installed & running on the host, and create the following secrets:
 ```
