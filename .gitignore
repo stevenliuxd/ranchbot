@@ -1,6 +1,4 @@
 nohup.out
 __pycache__/
 .env
-.terraform.lock.hcl
-.terraform/
-terraform.tfstate
+terraform.*
